@@ -6,7 +6,7 @@ document.getElementById("searchBtn").addEventListener("click", () => {
         method: 'GET'
     }
 
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=857f8dbf110d4b16bb471113241503&q=${searchVal}`, reop)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=857f8dbf110d4b16bb471113241503&q=${searchVal}`, reop)
         .then(response => response.json())
         .then(data => {
 
@@ -72,12 +72,12 @@ let currentDate = new Date(startDate);
 for (let i = 0; i < 7; i++) {
     const formatDate = currentDate.toISOString().split('T')[0];
 
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=857f8dbf110d4b16bb471113241503&q=${searchVal}&days=10&aqi=yes&dt=${formatDate}`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=857f8dbf110d4b16bb471113241503&q=${searchVal}&days=10&aqi=yes&dt=${formatDate}`)
         .then(response => response.json())
         .then(data => {
             document.getElementById(`dateF${i + 1}`).innerHTML = `${data.forecast.forecastday[0].date}`;
             document.getElementById(`tempF${i + 1}`).innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} °C`;
-            document.getElementById(`imgF${i + 1}`).src = `http:${data.forecast.forecastday[0].day.condition.icon}`;
+            document.getElementById(`imgF${i + 1}`).src = `https:${data.forecast.forecastday[0].day.condition.icon}`;
             document.getElementById(`weatherF${i + 1}`).innerHTML = ` ${data.forecast.forecastday[0].day.condition.text}`;
 
 
